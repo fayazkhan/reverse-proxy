@@ -37,6 +37,7 @@ An HTTP reverse proxy
 - Implement backend connection pooling or persistence.
 - Improve throughput by supporting conditional request headers like `ETag` & `Last-Modified`.
 - Implement caching.
+- Add parallel workers to leverage multiple CPUs.
 
 ### Possible security improvements
 
