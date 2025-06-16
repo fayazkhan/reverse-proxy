@@ -1,3 +1,8 @@
+# /// script
+# requires-python = ">=3.13"
+# dependencies = []
+# ///
+
 import argparse
 import asyncio
 import urllib.parse
@@ -78,3 +83,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
