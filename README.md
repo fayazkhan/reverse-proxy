@@ -42,5 +42,6 @@ An HTTP reverse proxy
 ### Possible security improvements
 
 - Add frontend SSL support.
+- Improve overall SSL handling.
 - Add options for rate-limiting and limiting content length and parallel connections.
 - Perform request validation.
