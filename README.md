@@ -3,10 +3,15 @@ An HTTP reverse proxy
 
 ## Getting started
 
+```bash
+    # Start a simple http server in a different terminal
+    $ python -m http.server 8000
+    # Use our proxy to forward requests to it
+    $ python main.py http://127.0.0.1:8000
+```
 
 ## Resources and references
 
-- https://docs.astral.sh/uv/
 - https://docs.python.org/3/library/asyncio-stream.html
 - https://stackoverflow.com/questions/4824451/detect-end-of-http-request-body
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages
@@ -25,8 +30,16 @@ An HTTP reverse proxy
 ### Limitations
 
 - No support for chunked content.
-- Only supports HTTP/1.x.
+- Only supports very basic HTTP/1.x.
 
-## Scaling
+### Possible scaling improvements
 
-## Security
+- Implement backend connection pooling or persistence.
+- Improve throughput by supporting conditional request headers like `ETag` & `Last-Modified`.
+- Implement caching.
+
+### Possible security improvements
+
+- Add frontend SSL support.
+- Add options for rate-limiting and limiting content length and parallel connections.
+- Perform request validation.
