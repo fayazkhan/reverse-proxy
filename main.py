@@ -54,7 +54,10 @@ class Server:
                 content_length = int(line.split(b':', 1)[1].strip())
             elif replace_host and line.startswith(b'Host:'):
                 # Replace the Host header with the backend server's host
-                new_host = f'Host: {self.backend_url.hostname}:{self.backend_url.port}\r\n'
+                if self.backend_url.port:
+                    new_host = f'Host: {self.backend_url.hostname}:{self.backend_url.port}\r\n'
+                else:
+                    new_host = f'Host: {self.backend_url.hostname}\r\n'
                 line = new_host.encode()
                 print(f"Replaced Host header with: {new_host!r}")
             message += line
@@ -81,7 +84,7 @@ class Server:
 
 async def main():
     argparser = argparse.ArgumentParser(description="Simple HTTP Server")
-    argparser.add_argument("backend", help="Backend server to use", default="http://example.com")
+    argparser.add_argument("backend", nargs='?', help="Backend server to use", default="http://example.com")
     backend = argparser.parse_args().backend
     await Server(backend).serve_forever()
 
